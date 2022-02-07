@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Document // ("users")  db içinde objelerin altında bulunacağı bşalık
+@Document // ("users")  db içinde objelerin altında bulunacağı başlık
 
 public class User {
 	
@@ -24,6 +24,7 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
+	
 	public User(UUID id, String firstName, String lastName, String email) {
 		this.id = id;
 		this.firstName = firstName;

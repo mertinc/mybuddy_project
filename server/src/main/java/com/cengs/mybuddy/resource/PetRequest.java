@@ -1,4 +1,4 @@
-package com.cengs.mybuddy.model;
+package com.cengs.mybuddy.resource;
 
 import java.util.UUID;
 
@@ -9,9 +9,9 @@ import lombok.Data;
 
 @Data
 @Document
-public class Pet {
 
-	@Id
+public class PetRequest {
+	
 	private UUID id;
 	private String name;
 	private int age;
@@ -19,18 +19,13 @@ public class Pet {
 	private String breed;//hayvanın cinsi
 	private String gender;//cinsiyeti
 
-	public Pet() {
-		
-		}
-
-	public Pet(UUID id, String name, int age, String type, String breed, String gender) {
-		
+	public PetRequest(UUID id, String name, int age, String type, String breed, String gender) {
 		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.type = type;
 		this.breed = breed;
 		this.gender = gender;
- }
-
+	}
+	
 }

@@ -1,17 +1,22 @@
 package com.cengs.mybuddy.controller;
 
 
+import com.cengs.mybuddy.dto.UserDTO;
 import com.cengs.mybuddy.model.User;
 import com.cengs.mybuddy.repository.UserRepository;
 import com.cengs.mybuddy.resource.UserRequest;
+import com.cengs.mybuddy.service.UserService;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators.UUIDGenerator;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,60 +24,26 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.UUID;
 
+import javax.validation.Valid;
+
 @RestController
+@Validated
+@RequestMapping("/users")
 public class UserController {
 
-	private final UserRepository userRepository;
 	
-	public UserController(UserRepository userRepository) {
-		
-		this.userRepository = userRepository;
-		
+	@Autowired
+	UserService userService;
+	
+	@PostMapping("/add-user")
+	public UserDTO addUser(@Valid @RequestBody UserDTO dto) {
+		System.out.println("Post tested.");
+		return userService.createUser(dto);
 	}
 	
-	@GetMapping("/user")
-	public ResponseEntity<List<User>> getAllUsers() {
-		
-		return ResponseEntity.ok(this.userRepository.findAll());
-		
+	@GetMapping("/findAll")
+	public List<UserDTO> findAll(){
+		return userService.findAllUser();		
 	}
 	
-	@PostMapping("/user")
-	public ResponseEntity<User> createUser(@RequestBody UserRequest userRequest){
-		System.out.println("Testing of post method");
-		User user = new User();
-		user.setId(UUID.randomUUID());
-		user.setFirstName(userRequest.getFirstName());
-		user.setLastName(userRequest.getLastName());
-		user.setEmail(userRequest.getEmail());
-		return ResponseEntity.status(201).body(this.userRepository.save(user));
-	
- }
-	@GetMapping("/user/{id}")
-	public ResponseEntity getAllUsersById(@PathVariable String id) {
-		
-		Optional <User> user = this.userRepository.findById(id);
-		System.out.println("Testing of find by id.");
-		System.out.println("User is : " + user);
-		if(user.isPresent()) {
-			return ResponseEntity.ok(user.get());
-		} 
-		else {
-			return ResponseEntity.ok("The product id : " + id + " was not found.");
-		}
-	}
-	@DeleteMapping("/user/{id}")
-	public ResponseEntity deleteUserById(@PathVariable String id) {
-		
-		Optional <User> user = this.userRepository.findById(id);
-		System.out.println("Testing of find by id.");
-		
-		if(user.isPresent()) {
-			this.userRepository.deleteById(id);
-			return ResponseEntity.ok("Successfuly deleted.");
-		} 
-		else {
-			return ResponseEntity.ok("The product id : " + id + " was not found.");
-		}
-	}
 }
