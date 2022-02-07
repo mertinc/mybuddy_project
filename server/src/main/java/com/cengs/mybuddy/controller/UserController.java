@@ -46,4 +46,11 @@ public class UserController {
 		return userService.findAllUser();		
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<User> findById(@PathVariable("id") UUID id){
+		return ResponseEntity.ok(userService.findById(id));		
+	}
+	
+	
+	
 }
