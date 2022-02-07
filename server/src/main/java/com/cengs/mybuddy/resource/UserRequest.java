@@ -12,6 +12,7 @@ public class UserRequest{
 	private String firstName;
 	private String lastName;
 	private String email;
+	
 	public UserRequest(UUID id, String firstName, String lastName, String email) {
 		this.id=id;
 		this.firstName = firstName;

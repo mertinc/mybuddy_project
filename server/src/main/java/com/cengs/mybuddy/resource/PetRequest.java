@@ -20,7 +20,6 @@ public class PetRequest {
 	private String gender;//cinsiyeti
 
 	public PetRequest(UUID id, String name, int age, String type, String breed, String gender) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.age = age;

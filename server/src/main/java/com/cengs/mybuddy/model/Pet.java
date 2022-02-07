@@ -13,12 +13,15 @@ public class Pet {
 
 	@Id
 	private UUID id;
-	
 	private String name;
 	private int age;
 	private String type;//hayvanın türü
 	private String breed;//hayvanın cinsi
 	private String gender;//cinsiyeti
+
+	public Pet() {
+		
+		}
 
 	public Pet(UUID id, String name, int age, String type, String breed, String gender) {
 		
@@ -29,4 +32,5 @@ public class Pet {
 		this.breed = breed;
 		this.gender = gender;
  }
+
 }
