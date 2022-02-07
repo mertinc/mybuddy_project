@@ -13,6 +13,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 public class User {
 	
+	@Id
+	private UUID id;
+	private String firstName;
+	private String lastName;
+	private String email;
+	
 	public User() {
 		this.id=id;
 		this.firstName = firstName;
@@ -24,10 +30,5 @@ public class User {
 		this.lastName = lastName;
 		this.email = email;
 	}
-	@Id
-	private UUID id;
-	private String firstName;
-	private String lastName;
-	private String email;
-	}
+}
 	

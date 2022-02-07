@@ -53,6 +53,7 @@ public class UserController {
 		
 		Optional <User> user = this.userRepository.findById(id);
 		System.out.println("Testing of find by id.");
+		System.out.println("User is : " + user);
 		if(user.isPresent()) {
 			return ResponseEntity.ok(user.get());
 		} 
