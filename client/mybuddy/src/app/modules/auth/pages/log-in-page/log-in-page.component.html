@@ -1,38 +1,38 @@
-<input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
-<input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly>
+<div class="container py-5 h-100">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div class="card shadow-2-strong" style="border-radius: 1rem;">
+        <div class="card-body p-5 text-center">
 
+          <h2 class="mb-4 pb-2 pb-md-0 mb-md-5">Sign In</h2>
 
+          <div class="form-outline mb-4">
+            <input type="email" id="emailAddress" class="form-control form-control-lg" />
+            <label class="form-label" for="emailAddress">Email</label>
+          </div>
 
-<p>
-  <span matBadge="4" matBadgeOverlap="false">Text with a badge</span>
-</p>
+          <div class="form-outline mb-4">
+            <input type="password" id="password" class="form-control form-control-lg" />
+            <label class="form-label" for="password">Password</label>
+          </div>
 
-<p>
-    <span matBadge="1" matBadgeSize="large">Text with large badge</span>
-</p>
+          <!-- Checkbox -->
+          <div class="form-check d-flex justify-content-start mb-4">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="form1Example3"
+            />
+            <label class="form-check-label" for="form1Example3">   Remember password </label>
+          </div>
 
-<p>
-  Button with a badge on the left
-  <button mat-raised-button color="primary"
-      matBadge="8" matBadgePosition="before" matBadgeColor="accent">
-    Action
-  </button>
-</p>
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
 
-<p>
-    Button toggles badge visibility
-    <button mat-raised-button matBadge="7" >
-        Hide
-    </button>
-</p>
+          <hr class="my-4">
 
-<p>
-  Icon with a badge
-  <mat-icon matBadge="15" matBadgeColor="warn">home</mat-icon>
-    <!-- Include text description of the icon's meaning for screen-readers -->
-    <span class="cdk-visually-hidden">
-      Example with a home icon with overlaid badge showing the number 15
-    </span>
-</p>
-
-
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
