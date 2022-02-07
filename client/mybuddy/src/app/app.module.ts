@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { LogInPageComponent } from './modules/auth/pages/log-in-page/log-in-page.component';
 import { RegisterPageComponent } from './modules/auth/pages/register-page/register-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RootModule } from './modules/root/root.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RootModule
   ],
   providers: [],
   bootstrap: [AppComponent]
