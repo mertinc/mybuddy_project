@@ -13,4 +13,6 @@ public interface PetRepository extends MongoRepository<Pet, String> {
 @Autowired 
 
 	Pet findById(UUID id);
+
+	void deleteById(UUID id);
 }

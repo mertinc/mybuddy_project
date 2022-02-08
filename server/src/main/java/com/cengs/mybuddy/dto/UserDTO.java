@@ -24,6 +24,8 @@ public class UserDTO {
 	private String email;
 	@NotNull(message = "userName is mandatory")
 	private String userName;
+	@NotNull(message = "phoneNumber is mandatory")
+	private Long phoneNumber;
 	@NotNull(message = "password is mandatory")
 	private String password;
 }

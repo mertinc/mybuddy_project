@@ -21,25 +21,16 @@ public class User {
 	private String lastName;
 	private String email;
 	private String userName;
-	private Integer phoneNumber;
+	private Long phoneNumber;
 	private String password;
-	private List<Comment> comments;
+	public List<Comment> comments;
 	//private List<Ad> ads;
 
 
 	public User() {
-		this.id=id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.userName = userName;
-		this.phoneNumber = phoneNumber;
-		this.password = password;
-		this.comments = comments;
-
-	}
+}
 	
-	public User(UUID id, String firstName, String lastName, String email, String userName, Integer phoneNumber, String password, List<Comment> comments) {
+	public User(UUID id, String firstName, String lastName, String email, String userName, Long phoneNumber, String password, List<Comment> comments) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;

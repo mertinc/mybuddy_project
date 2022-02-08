@@ -17,13 +17,13 @@ public class Comment {
     private User user;
     //@DBRef
     //private Ad ad;
-    private Date date;
+    private String date;
     private String content;
 
     public Comment(){
 
     }
-    public Comment(UUID id, User user, Date date,String content) {
+    public Comment(UUID id, User user, String date,String content) {
         this.id = id;
         this.user = user;
         //this.ad = ad;
