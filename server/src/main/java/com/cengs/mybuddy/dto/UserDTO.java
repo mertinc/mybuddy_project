@@ -18,8 +18,6 @@ public class UserDTO {
 	private UUID id;
 	@NotNull(message = "Username is mandatory")
 	private String firstName;
-	//@NotNull(message = "name is mandatory")
-	//private String name;
 	@NotNull(message = "lastName is mandatory")
 	private String lastName;
 	@NotNull(message = "email is mandatory")
