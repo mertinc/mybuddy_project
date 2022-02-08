@@ -11,6 +11,7 @@ const routesNames = {
   home: '',
   error404: '404',
   pet: {
+    addPet: 'add-pet',
     myPet: 'my-pet',
     detail: ':id',
   },
@@ -28,6 +29,7 @@ export const RoutesConfig: any = {
     error404: `/${routesNames.error404}`,
     pet: {
       myPet: `/${basePaths.pet}/${routesNames.pet.myPet}`,
+      addPet: `/${basePaths.pet}/${routesNames.pet.addPet}`
     },
     auth: {
       signUp: `/${basePaths.auth}/${routesNames.auth.signUp}`,

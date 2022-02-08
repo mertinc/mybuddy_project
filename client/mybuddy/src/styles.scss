@@ -1,7 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+// @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,100&display=swap');
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// @font-face {
+//   font-family: 'Roboto';
+//   src: url('/assets/fonts/.eot'); /* IE9 Compat Modes */
+//   src: url('/assets/fonts/roboto.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+//   url('/assets/fonts/roboto.woff') format('woff'), /* Modern Browsers */
+//   url('/assets/fonts/roboto.ttf')  format('truetype'), /* Safari, Android, iOS */
+//   url('/assets/fonts/roboto.svg#svgFontName') format('svg'); /* Legacy iOS */
+// }
+@import "~bootstrap/scss/bootstrap";
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif !important;
+}
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';

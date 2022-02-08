@@ -1,0 +1,25 @@
+.item {
+  display: flex;
+  border: 1px solid #c9bebe;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.item .item-subtitle {
+  text-decoration: none;
+}
+
+.item .item-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: fit-content;
+  text-decoration: none;
+}
+
+.item .item-title {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}

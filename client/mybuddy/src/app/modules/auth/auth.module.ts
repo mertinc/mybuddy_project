@@ -15,7 +15,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    LogInPageComponent,
+    RegisterPageComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
