@@ -2,6 +2,7 @@ package com.cengs.mybuddy.service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -43,14 +44,24 @@ public class UserService {
 		return users.stream().map(user->mapUserDtoToUser(user)).collect(Collectors.toList());
 		
 	}
+	
+	public User findById(UUID id){
+		
+		return userRepository.findById(id);	
+	}
+	
+	public void deleteUser(UUID id) {
+		userRepository.deleteById(id);
+	}
 
 	private User mapUserDtoToUser(UserDTO dto) {
 		User user = new User();
-		dto.setId(user.getId());
+		user.setId(dto.getId());
 		user.setFirstName(dto.getFirstName());
-		//user.setUsername(dto.getUsername());
 		user.setLastName(dto.getLastName());
 		user.setEmail(dto.getEmail());
+		user.setUserName(dto.getUserName());
+		user.setPassword(dto.getPassword());
 		return user;
 	}
 
@@ -59,9 +70,12 @@ public class UserService {
 		dto.setId(user.getId());
 		dto.setLastName(user.getLastName());
 		dto.setFirstName(user.getFirstName());
-	//	dto.setUsername(user.getUsername());
+		dto.setUserName(user.getUserName());
 		dto.setEmail(user.getEmail());
+		dto.setPassword(user.getPassword());
 		return dto;
 	}
+
+	
 
 }

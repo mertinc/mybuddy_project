@@ -35,10 +35,15 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
-	@PostMapping("/add-user")
+	@PostMapping("/addUser")
 	public UserDTO addUser(@Valid @RequestBody UserDTO dto) {
 		System.out.println("Post tested.");
 		return userService.createUser(dto);
+	}
+	@DeleteMapping("/deleteUser/{id}")
+	public void deleteUser(@PathVariable("id") UUID id) {
+		userService.deleteUser(id);
+		
 	}
 	
 	@GetMapping("/findAll")
@@ -46,4 +51,8 @@ public class UserController {
 		return userService.findAllUser();		
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<User> findById(@PathVariable("id") UUID id){
+		return ResponseEntity.ok(userService.findById(id));		
+	}
 }
