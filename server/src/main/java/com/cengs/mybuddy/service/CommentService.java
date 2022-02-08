@@ -30,10 +30,17 @@ public class CommentService {
 
     public CommentDTO createComment(CommentDTO commentDTO){
         Comment newComment=new Comment();
+        User user = new User();
+        
+        user=userService.findById(commentDTO.getUserId());
         newComment=mapCommentDtoToComment(commentDTO);
         newComment.setUser(userService.findById(commentDTO.getUserId()));
         newComment.setId(UUID.randomUUID());
         newComment=commentRepository.save(newComment);
+        System.out.println("Comment Saved");
+        user.getComments().add(newComment);
+        user=userRepository.save(user);
+        /*
         User tmp = userService.findById(commentDTO.getUserId());
         List<Comment> newComments = new ArrayList<Comment>();
         newComments.add(newComment);
@@ -43,9 +50,8 @@ public class CommentService {
         }
         else
         {
-
             tmp.comments.add(newComment);
-        }
+        }*/
         //(userService.findById(commentDTO.getUserId()))..save((userService.findById(commentDTO.getUserId())));
         return mapCommentDtoToComment(newComment);
     }
@@ -63,7 +69,7 @@ public class CommentService {
     private CommentDTO mapCommentDtoToComment(Comment comment) {
         CommentDTO dto = new CommentDTO();
         dto.setId(comment.getId());
-        System.out.println(comment.getUser());
+        //System.out.println(comment.getUser());
         dto.setUserId(comment.getUser().getId());
         dto.setDate(comment.getDate());
         dto.setContent(comment.getContent());

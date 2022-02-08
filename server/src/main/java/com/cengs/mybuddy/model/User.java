@@ -2,6 +2,7 @@ package com.cengs.mybuddy.model;
 
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,7 +24,7 @@ public class User {
 	private String userName;
 	private Long phoneNumber;
 	private String password;
-	public List<Comment> comments;
+	public List<Comment> comments = new ArrayList<>();
 	//private List<Ad> ads;
 
 
