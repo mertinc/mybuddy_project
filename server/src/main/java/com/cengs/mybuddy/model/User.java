@@ -18,18 +18,19 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String email;
+	private String userName;
+	private String password;
 	
 	public User() {
-		this.id=id;
-		this.firstName = firstName;
-		this.lastName = lastName;
 	}
 	
-	public User(UUID id, String firstName, String lastName, String email) {
+	public User(UUID id, String firstName, String lastName, String email, String userName, String password) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.userName = userName;
+		this.password = password;
 	}
 }
 	

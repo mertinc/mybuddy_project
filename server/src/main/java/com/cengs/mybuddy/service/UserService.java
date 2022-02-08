@@ -47,17 +47,21 @@ public class UserService {
 	
 	public User findById(UUID id){
 		
-		return userRepository.findById(id);
-		
+		return userRepository.findById(id);	
+	}
+	
+	public void deleteUser(UUID id) {
+		userRepository.deleteById(id);
 	}
 
 	private User mapUserDtoToUser(UserDTO dto) {
 		User user = new User();
-		dto.setId(user.getId());
+		user.setId(dto.getId());
 		user.setFirstName(dto.getFirstName());
-		//user.setUsername(dto.getUsername());
 		user.setLastName(dto.getLastName());
 		user.setEmail(dto.getEmail());
+		user.setUserName(dto.getUserName());
+		user.setPassword(dto.getPassword());
 		return user;
 	}
 
@@ -66,9 +70,12 @@ public class UserService {
 		dto.setId(user.getId());
 		dto.setLastName(user.getLastName());
 		dto.setFirstName(user.getFirstName());
-	//	dto.setUsername(user.getUsername());
+		dto.setUserName(user.getUserName());
 		dto.setEmail(user.getEmail());
+		dto.setPassword(user.getPassword());
 		return dto;
 	}
+
+	
 
 }

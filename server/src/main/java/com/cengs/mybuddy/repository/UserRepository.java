@@ -13,6 +13,8 @@ public interface UserRepository extends MongoRepository<User, String> {
 @Autowired 
 
 	User findById(UUID id);
+
+void deleteById(UUID id);
 	
 	//Optional<User> findById(UUID id);
 
