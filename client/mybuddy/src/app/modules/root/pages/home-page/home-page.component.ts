@@ -12,5 +12,7 @@ export class HomePageComponent implements OnInit {
     this.animals = fakeDb.animals;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 }

@@ -14,6 +14,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatSelectModule } from '@angular/material/select';
 
 import { NgModule } from '@angular/core';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -36,7 +37,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatSelectModule,
   ],
   exports: [
     MatButtonModule,
@@ -55,9 +57,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatMomentDateModule
-  ]
+    MatMomentDateModule,
+    MatSelectModule
+  ],
 })
-
-export class MaterialModule {
-}
+export class MaterialModule {}
