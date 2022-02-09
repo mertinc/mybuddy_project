@@ -25,7 +25,7 @@ public class AdController {
 	@Autowired
 	AdService adService;
 	
-	@PostMapping("/addAd")
+	@PostMapping("/createAdd")
 	public AdDTO addAd(@Valid @RequestBody AdDTO dto) {
 		System.out.println("Post CREATE AD tested");
 		System.out.println(dto.getId()+"\n "+dto.getUserId()+"\n "+dto.getDate()+"\n "+dto.getTitle());

@@ -24,12 +24,11 @@ public class Ad {
 	private Long phoneNumber;
 	private String status;
 	public List<Comment> comments = new ArrayList<>();
-	public List<Pet> pets = new ArrayList<>();
 	//private List<Ad> ads;
 
 	public Ad() {
 }
-	public Ad(UUID id, String date, String title, String explanation, String image, Long phoneNumber, String status,List<Comment> comments, List<Pet> pets,User user) {
+	public Ad(UUID id, String date, String title, String explanation, String image, Long phoneNumber, String status,List<Comment> comments,User user) {
 		this.id = id;
 		this.user = user;
 		this.date = date;
@@ -39,6 +38,5 @@ public class Ad {
 		this.phoneNumber = phoneNumber;
 		this.status = status;
 		this.comments = comments;
-		this.pets = pets;
 	}
 }

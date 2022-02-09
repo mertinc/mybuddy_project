@@ -31,7 +31,7 @@ public class User {
 	public User() {
 }
 	
-	public User(UUID id, String firstName, String lastName, String email, String userName, Long phoneNumber, String password, List<Comment> comments, List<Ad> ads) {
+	public User(UUID id, String firstName, String lastName, String email, String userName, Long phoneNumber, String password) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -39,8 +39,6 @@ public class User {
 		this.userName = userName;
 		this.phoneNumber = phoneNumber;
 		this.password = password;
-		this.comments = comments;
-		this.ads = ads;
 	}
 }
 	
