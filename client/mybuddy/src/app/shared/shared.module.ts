@@ -3,6 +3,7 @@ import { MaterialModule } from './modules/material.module';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { fakeDbService } from './services/fakeDb';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +17,8 @@ import { RouterModule } from '@angular/router';
   exports: [
     CommonModule,
     MaterialModule
-  ]
+  ],
+  providers:[fakeDbService]
 })
 
 export class SharedModule {

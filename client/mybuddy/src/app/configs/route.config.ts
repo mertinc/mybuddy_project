@@ -29,7 +29,8 @@ export const RoutesConfig: any = {
     error404: `/${routesNames.error404}`,
     pet: {
       myPet: `/${basePaths.pet}/${routesNames.pet.myPet}`,
-      addPet: `/${basePaths.pet}/${routesNames.pet.addPet}`
+      addPet: `/${basePaths.pet}/${routesNames.pet.addPet}`,
+      detail: `/${basePaths.pet}/${routesNames.pet.detail}`
     },
     auth: {
       signUp: `/${basePaths.auth}/${routesNames.auth.signUp}`,

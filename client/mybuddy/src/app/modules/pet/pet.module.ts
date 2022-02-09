@@ -4,17 +4,20 @@ import { AddPetComponent } from './add-pet/add-pet.component';
 import { RouterModule, Routes } from '@angular/router';
 import { RoutesConfig } from 'src/app/configs/route.config';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { PetDetailComponent } from './pet-detail/pet-detail.component';
 
 const petRoutes = RoutesConfig.routesNames.pet;
 
 
 const routes: Routes = [
-  { path: petRoutes.addPet, component: AddPetComponent }
+  { path: petRoutes.addPet, component: AddPetComponent },
+  { path: petRoutes.detail, component: PetDetailComponent }
 ];
 
 @NgModule({
   declarations: [
-    AddPetComponent
+    AddPetComponent,
+    PetDetailComponent
   ],
   imports: [
     CommonModule,
