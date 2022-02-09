@@ -48,7 +48,11 @@ public AdService(AdRepository adRepository, UserRepository userRepository,Commen
 		
 		return mapAdDtoToAd(newAd);
 	}
-	
+	public List<AdDTO> findAllAd(){
+		List<Ad> ads=adRepository.findAll();
+		return ads.stream().map(ad->mapAdDtoToAd(ad)).collect(Collectors.toList());
+		
+	}
 	/*public List<AdDTO> findAllAd(){
 		List<Ad> ads=adRepository.findAll();
 		return ads.stream().map(ad->mapAdDtoToAd(ad)).collect(Collectors.toList());
