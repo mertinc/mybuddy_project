@@ -18,6 +18,7 @@ const routesNames = {
   auth: {
     signUp: 'sign-up',
     logIn: 'log-in',
+    profileUpdate: 'profile-update'
   }
 };
 
@@ -35,6 +36,7 @@ export const RoutesConfig: any = {
     auth: {
       signUp: `/${basePaths.auth}/${routesNames.auth.signUp}`,
       logIn: `/${basePaths.auth}/${routesNames.auth.logIn}`,
+      profileUpdate: `/${basePaths.auth}/${routesNames.auth.profileUpdate}`,
     }
   }
 };
