@@ -27,5 +27,4 @@ public class CommentController {
         System.out.println(dto.getId()+"\n "+dto.getUserId()+"\n "+dto.getDate()+"\n "+dto.getContent());
         return commentService.createComment(dto);
     }
-
 }

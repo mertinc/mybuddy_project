@@ -25,13 +25,13 @@ public class User {
 	private Long phoneNumber;
 	private String password;
 	public List<Comment> comments = new ArrayList<>();
-	//private List<Ad> ads;
+	public List<Ad> ads= new ArrayList<>();
 
 
 	public User() {
 }
 	
-	public User(UUID id, String firstName, String lastName, String email, String userName, Long phoneNumber, String password, List<Comment> comments) {
+	public User(UUID id, String firstName, String lastName, String email, String userName, Long phoneNumber, String password, List<Comment> comments, List<Ad> ads) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -40,6 +40,7 @@ public class User {
 		this.phoneNumber = phoneNumber;
 		this.password = password;
 		this.comments = comments;
+		this.ads = ads;
 	}
 }
 	
