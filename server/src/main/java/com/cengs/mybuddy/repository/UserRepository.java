@@ -13,9 +13,9 @@ public interface UserRepository extends MongoRepository<User, UUID> {
 @Autowired 
 
 	Optional<User> findById(UUID id);
-
+	
 	void deleteById(UUID id);
 	
-	//Optional<User> findById(UUID id);
+	String findByEmailAndPassword(String email, String password);	//Optional<User> findById(UUID id);
 
 }

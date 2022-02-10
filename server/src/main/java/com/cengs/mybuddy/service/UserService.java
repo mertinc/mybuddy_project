@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.cengs.mybuddy.dto.UserDTO;
+import com.cengs.mybuddy.dto.UserLoginDTO;
 import com.cengs.mybuddy.model.User;
 import com.cengs.mybuddy.repository.UserRepository;
 
@@ -56,6 +57,16 @@ public class UserService {
 	public void deleteUser(UUID id) {
 		userRepository.deleteById(id);
 	}
+	public String userByEmail(UserLoginDTO loginDTO){
+        User loggedUser = new User();
+        loggedUser.setEmail(loginDTO.getEmail());
+        loggedUser.setPassword(loginDTO.getPassword());
+        String match = userRepository.findByEmailAndPassword(loggedUser.getEmail(), loggedUser.getPassword());
+        if(match != null){
+            return "true";
+        }
+        	return "false";
+    }
 
 	private User mapUserDtoToUser(UserDTO dto) {
 		User user = new User();

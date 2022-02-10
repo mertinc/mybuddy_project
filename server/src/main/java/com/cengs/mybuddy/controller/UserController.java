@@ -2,6 +2,7 @@ package com.cengs.mybuddy.controller;
 
 
 import com.cengs.mybuddy.dto.UserDTO;
+import com.cengs.mybuddy.dto.UserLoginDTO;
 import com.cengs.mybuddy.model.User;
 import com.cengs.mybuddy.repository.UserRepository;
 import com.cengs.mybuddy.resource.UserRequest;
@@ -42,6 +43,12 @@ public class UserController {
 		System.out.println("Post tested.");
 		return userService.createUser(dto);
 	}
+	@PostMapping("/loginUser")
+	public String loginUser(@Valid @RequestBody UserLoginDTO dto) {
+		System.out.println("Post tested.");
+		return userService.userByEmail(dto);
+	}
+
 	@DeleteMapping("/deleteUser/{id}")
 	public void deleteUser(@PathVariable("id") UUID id) {
 		userService.deleteUser(id);
