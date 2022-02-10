@@ -1,24 +1,34 @@
 // Angular Modules
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-@Injectable()
+import { Observable } from 'rxjs';
+@Injectable({
+  providedIn: 'root',
+})
 export class ApiHttpService {
+  private readonly url = 'http://localhost:8088/mybuddy_project';
   constructor(
     // Angular Modules
     private http: HttpClient
-  ) {
+  ) {}
 
+  getAdd(): Observable<any> {
+    return this.http.get(this.url + '/ads/findAll');
   }
-  public get(url: string, options?: any) {
-    return this.http.get(url, options);
-  }
-  public post(url: string, data: any, options?: any) {
-    return this.http.post(url, data, options);
-  }
-  public put(url: string, data: any, options?: any) {
-    return this.http.put(url, data, options);
-  }
-  public delete(url: string, options?: any) {
-    return this.http.delete(url, options);
+
+  createAd(body: any) {
+    return new Promise((resolve, reject) => {
+      this.http
+        .post(this.url + '/ads/addAd', body)
+        .toPromise()
+        .then(
+          (res) => {
+            resolve(res);
+          },
+          (msg) => {
+            reject(msg);
+          }
+        );
+    });
   }
 }
