@@ -13,7 +13,8 @@ public interface UserRepository extends MongoRepository<User, UUID> {
 @Autowired 
 
 	Optional<User> findById(UUID id);
-	
+
+	Optional<User> findByEmail(String email);
 	void deleteById(UUID id);
 	
 	String findByEmailAndPassword(String email, String password);	//Optional<User> findById(UUID id);

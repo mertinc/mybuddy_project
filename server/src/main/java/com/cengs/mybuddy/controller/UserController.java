@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import javax.validation.Valid;
 
@@ -44,7 +45,7 @@ public class UserController {
 		return userService.createUser(dto);
 	}
 	@PostMapping("/loginUser")
-	public String loginUser(@Valid @RequestBody UserLoginDTO dto) {
+	public Stream<Object> loginUser(@Valid @RequestBody UserLoginDTO dto) {
 		System.out.println("Post tested.");
 		return userService.userByEmail(dto);
 	}

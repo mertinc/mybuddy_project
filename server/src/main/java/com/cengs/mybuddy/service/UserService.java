@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
 
@@ -57,15 +58,19 @@ public class UserService {
 	public void deleteUser(UUID id) {
 		userRepository.deleteById(id);
 	}
-	public String userByEmail(UserLoginDTO loginDTO){
+	public Stream<Object> userByEmail(UserLoginDTO loginDTO){
         User loggedUser = new User();
         loggedUser.setEmail(loginDTO.getEmail());
         loggedUser.setPassword(loginDTO.getPassword());
         String match = userRepository.findByEmailAndPassword(loggedUser.getEmail(), loggedUser.getPassword());
+        String x = userRepository.findByEmailAndPassword(loggedUser.getEmail(), loggedUser.getPassword());
+        Optional<User> tempUser = userRepository.findByEmail(loggedUser.getEmail());
+        tempUser.stream().map(t -> t.getId());
+        System.out.println((x));
         if(match != null){
-            return "true";
+            return tempUser.stream().map(t -> t.getId());
         }
-        	return "false";
+        	return null;
     }
 
 	private User mapUserDtoToUser(UserDTO dto) {
