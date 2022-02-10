@@ -53,7 +53,7 @@ public AdService(AdRepository adRepository, UserRepository userRepository,Commen
 		
 	}
 	public Ad findById(UUID id){
-		return adRepository.findById(id);	
+		return adRepository.findById(id).get();	
 	}
 	/*public List<AdDTO> findAllAd(){
 		List<Ad> ads=adRepository.findAll();

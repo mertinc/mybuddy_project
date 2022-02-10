@@ -24,10 +24,12 @@ public class UserService {
 	
 	public UserDTO createUser(UserDTO userDto) {
 		User existUser = new User();
-		existUser = userRepository.findById(userDto.getId());
-		if(Objects.nonNull(existUser)) {
+		Optional<User>optUser;
+		optUser = userRepository.findById(userDto.getId());
+		if(optUser.isEmpty()) {
 			throw new RuntimeException("Exist User");
 		}
+		existUser=optUser.get();
 		User newUser = new User();
 		newUser=mapUserDtoToUser(userDto);
 		newUser.setId(UUID.randomUUID());
@@ -47,7 +49,7 @@ public class UserService {
 	
 	public User findById(UUID id){
 		
-		return userRepository.findById(id);	
+		return userRepository.findById(id).get();	
 	}
 	
 	public void deleteUser(UUID id) {

@@ -9,10 +9,10 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import com.cengs.mybuddy.model.Ad;
 import com.cengs.mybuddy.model.User;
 
-public interface AdRepository extends MongoRepository<Ad, String> {
+public interface AdRepository extends MongoRepository<Ad, UUID> {
 @Autowired
 
-	Ad findById(UUID id);
+	Optional<Ad> findById(UUID id);
 	
 	void deleteById(UUID id);
 }
