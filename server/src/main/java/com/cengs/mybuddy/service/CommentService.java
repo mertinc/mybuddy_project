@@ -26,25 +26,27 @@ public class CommentService {
     private final AdRepository adRepository;
     private AdService adService;
 
-    public CommentService(CommentRepository commentRepository, AdRepository adRepository) {
+    public CommentService(CommentRepository commentRepository, AdRepository adRepository, AdService adService) {
         this.commentRepository = commentRepository;
         this.adRepository = adRepository;
+        this.adService = adService;
     }
 
     public CommentDTO createComment(CommentDTO commentDTO){
         Comment newComment=new Comment();
-        User user = new User();
-        Ad ad = new Ad();
-        
-        user=userService.findById(commentDTO.getUserId());
-        ad=adService.findById(commentDTO.getAdId());
+        User user1 = userService.findById(commentDTO.getUserId());
+        System.out.println("user: "+user1);
+        System.out.println("getAdId: "+commentDTO.getAdId());
+        Ad ad1 = adService.findById(commentDTO.getAdId());
+        System.out.println("ad: "+ad1);
         newComment=mapCommentDtoToComment(commentDTO);
         newComment.setUser(userService.findById(commentDTO.getUserId()));
         newComment.setId(UUID.randomUUID());
         newComment=commentRepository.save(newComment);
         System.out.println("Comment Saved");
-        ad.getComments().add(newComment);
-        ad=adRepository.save(ad);
+        ad1.getComments().add(newComment);
+        ad1=adRepository.save(ad1);
+
         return mapCommentDtoToComment(newComment);
     }
 

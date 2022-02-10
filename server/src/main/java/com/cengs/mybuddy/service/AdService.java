@@ -55,7 +55,17 @@ public AdService(AdRepository adRepository, UserRepository userRepository,Commen
 	public Ad findById(UUID id){
 		return adRepository.findById(id).get();	
 	}
-	/*public List<AdDTO> findAllAd(){
+	/*
+	 * public Ad getAd(String adId){
+		return adRepository.findById(UUID.nameUUIDFromBytes(adId.getBytes()));
+	}
+	public List<Ad> getAllAd(){
+		return  adRepository.findAll();
+	}
+	 * 
+	 * 
+	 * 
+	 * public List<AdDTO> findAllAd(){
 		List<Ad> ads=adRepository.findAll();
 		return ads.stream().map(ad->mapAdDtoToAd(ad)).collect(Collectors.toList());
 	}*/
@@ -66,11 +76,25 @@ public AdService(AdRepository adRepository, UserRepository userRepository,Commen
 		ad.setDate(dto.getDate());
 		ad.setTitle(dto.getTitle());
 		ad.setExplanation(dto.getExplanation());
-		ad.setImage(dto.getImage());
+		ad.setImageUrl(dto.getImageURL());
 		ad.setPhoneNumber(dto.getPhoneNumber());
 		ad.setStatus(dto.getStatus());
 		return ad;
 	}
+	/*
+	 * public Ad mapAdDtoToAd(AdDTO dto) {
+		Ad ad = new Ad();
+		ad.setId(dto.getId());
+		ad.setUser(userService.findById(dto.getUserId()));
+		ad.setDate(dto.getDate());
+		ad.setTitle(dto.getTitle());
+		ad.setExplanation(dto.getExplanation());
+		ad.setImageUrl(dto.getImageURL());
+		ad.setPhoneNumber(dto.getPhoneNumber());
+		ad.setStatus(dto.getStatus());
+		return ad;
+	}
+	 */
 
 	private AdDTO mapAdDtoToAd(Ad ad) {
 		AdDTO dto = new AdDTO();
@@ -79,7 +103,7 @@ public AdService(AdRepository adRepository, UserRepository userRepository,Commen
 		dto.setDate(ad.getDate());
 		dto.setTitle(ad.getTitle());
 		dto.setExplanation(ad.getExplanation());
-		dto.setImage(ad.getImage());
+		dto.setImageURL(ad.getImageUrl());
 		dto.setPhoneNumber(ad.getPhoneNumber());
 		dto.setStatus(ad.getStatus());
 		return dto;

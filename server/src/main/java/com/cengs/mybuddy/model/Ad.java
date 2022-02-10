@@ -8,10 +8,16 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
+@ToString
 @Document
+//@NoArgsConstructor
+@AllArgsConstructor
 public class Ad {
 	@Id
 	private UUID id;
@@ -21,14 +27,15 @@ public class Ad {
 	private String title;
 	private String explanation;
 	private String image;
-	private Long phoneNumber;
+	private String phoneNumber;
 	private String status;
 	public List<Comment> comments = new ArrayList<>();
+	private String imageUrl;
 	//private List<Ad> ads;
 
 	public Ad() {
 }
-	public Ad(UUID id, String date, String title, String explanation, String image, Long phoneNumber, String status,List<Comment> comments,User user) {
+	public Ad(UUID id, String date, String title, String explanation, String image, String phoneNumber, String status,List<Comment> comments,User user) {
 		this.id = id;
 		this.user = user;
 		this.date = date;
