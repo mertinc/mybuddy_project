@@ -52,6 +52,9 @@ public AdService(AdRepository adRepository, UserRepository userRepository,Commen
 		return ads.stream().map(ad->mapAdDtoToAd(ad)).collect(Collectors.toList());
 		
 	}
+	public Ad findById(UUID id){
+		return adRepository.findById(id);	
+	}
 	/*public List<AdDTO> findAllAd(){
 		List<Ad> ads=adRepository.findAll();
 		return ads.stream().map(ad->mapAdDtoToAd(ad)).collect(Collectors.toList());
@@ -80,12 +83,5 @@ public AdService(AdRepository adRepository, UserRepository userRepository,Commen
 		dto.setPhoneNumber(ad.getPhoneNumber());
 		dto.setStatus(ad.getStatus());
 		return dto;
-	}
-
-	public Ad findById(UUID adId) {
-		// TODO Auto-generated method stub
-		return adRepository.findById(adId);
-	}
-	
-	
+	}	
 }
