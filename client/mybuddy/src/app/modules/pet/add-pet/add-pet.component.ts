@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { formatDate } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiHttpService } from 'src/app/shared/services/api-http.service';
+import { AuthService } from '../../auth/pages/services/auth.service';
+// import { adPublishRequest } from '../../auth/pages/services/axios';
 
 @Component({
   selector: 'app-add-pet',
@@ -11,15 +13,26 @@ import { ApiHttpService } from 'src/app/shared/services/api-http.service';
 export class AddPetComponent implements OnInit {
   addPetForm: FormGroup;
   srcResult: any;
-  constructor(private fb: FormBuilder, private apiService: ApiHttpService) {}
+  user: any;
+  fileName = '';
+  formData = new FormData();
+  constructor(
+    private fb: FormBuilder,
+    private apiService: ApiHttpService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
+    this.authService.user$.subscribe((data) => {
+      this.user = data;
+    });
     this.addPetForm = this.fb.group({
       title: ['', Validators.required],
       explanation: ['', [Validators.required]],
       status: ['', [Validators.required]],
       date: ['', [Validators.required]],
     });
+    // adPublishRequest()
   }
 
   onSubmit(form: FormGroup) {
@@ -31,16 +44,24 @@ export class AddPetComponent implements OnInit {
     console.log('date', form.value.date._d);
     console.log('date', formatDate(form.value.date._d, 'dd/MM/yyyy', 'en-US'));
     console.log('date', form.value.date._i);
-    // const data = {
-    //   "title": form.value.title,
-    //   "date": formatDate(form.value.date._d, 'dd/MM/yyyy', 'en-US'),
-    //   "explanation": form.value.explanation,
-
+    form.value.userId = this.user[0];
+    form.value.phoneNumber = '05538589058';
+    // form.value.date = formatDate(form.value.date._d, 'dd/MM/yyyy', 'en-US');
+    form.value.date = "2022-02-02";
+    console.log(form.value);
+    // let headers = new HttpHeaders().set('content-type', 'multipart/form-data')
+    this.formData.append('form', form.value);
     // };
-    // this.apiService.createAd();
+    this.apiService.createAdWithImg(this.formData);
   }
 
-  fileUpload(data: any) {
-    console.log(data);
+  fileUpload(event: any) {
+    const file: File = event.target.files[0];
+    console.log(file);
+    if (file) {
+      this.fileName = file.name;
+      this.formData.append('file', file);
+      console.log(this.formData);
+    }
   }
 }

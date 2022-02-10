@@ -1,6 +1,6 @@
 // Angular Modules
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
@@ -52,6 +52,24 @@ export class ApiHttpService {
     return new Promise((resolve, reject) => {
       this.http
         .post(this.url + '/ads/createAd', body)
+        .toPromise()
+        .then(
+          (res) => {
+            resolve(res);
+          },
+          (msg) => {
+            reject(msg);
+          }
+        );
+    });
+  }
+
+  createAdWithImg(body: any) {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'multipart/form-data');
+    return new Promise((resolve, reject) => {
+      this.http
+        .post(this.url + '/ads/', body,{headers:headers})
         .toPromise()
         .then(
           (res) => {

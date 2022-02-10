@@ -10,6 +10,7 @@ import { ApiHttpService } from 'src/app/shared/services/api-http.service';
 export class PetDetailComponent implements OnInit {
   adId: any;
   addDetail: any;
+  comments: any;
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiHttpService
@@ -21,8 +22,9 @@ export class PetDetailComponent implements OnInit {
   }
 
   getAdDetail(): void {
-    this.apiService.getAdWithId(this.adId).then((data:any) => {
+    this.apiService.getAdWithId(this.adId).then((data: any) => {
       this.addDetail = [data];
+      this.comments = data.comments;
     });
   }
 }
