@@ -57,4 +57,10 @@ export class AuthService {
   //     this.userData.next(null);
   //   });
   }
+
+  getUser(){
+    this.user$.subscribe(data => {
+      return console.log(data);
+    })
+  }
 }

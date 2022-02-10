@@ -16,8 +16,20 @@ export class ApiHttpService {
     return this.http.get(this.url + '/ads/findAll');
   }
 
-  login(){
-
+  login(data: any){
+    return new Promise((resolve, reject) => {
+      this.http
+        .post(this.url + '/users/loginUser', data)
+        .toPromise()
+        .then(
+          (res) => {
+            resolve(res);
+          },
+          (msg) => {
+            reject(msg);
+          }
+        );
+    });
   }
 
   getAdWithId(id: string) {
