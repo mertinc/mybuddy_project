@@ -2,8 +2,10 @@ package com.cengs.mybuddy.service;
 
 import com.cengs.mybuddy.dto.CommentDTO;
 import com.cengs.mybuddy.dto.UserDTO;
+import com.cengs.mybuddy.model.Ad;
 import com.cengs.mybuddy.model.Comment;
 import com.cengs.mybuddy.model.User;
+import com.cengs.mybuddy.repository.AdRepository;
 import com.cengs.mybuddy.repository.CommentRepository;
 import com.cengs.mybuddy.repository.UserRepository;
 
@@ -21,16 +23,17 @@ public class CommentService {
     @Autowired
     private UserService userService;
     private final CommentRepository commentRepository;
-    private final UserRepository userRepository;
+    private final AdRepository adRepository;
 
-    public CommentService(CommentRepository commentRepository, UserRepository userRepository) {
+    public CommentService(CommentRepository commentRepository, AdRepository adRepository) {
         this.commentRepository = commentRepository;
-        this.userRepository = userRepository;
+        this.adRepository = adRepository;
     }
 
     public CommentDTO createComment(CommentDTO commentDTO){
         Comment newComment=new Comment();
         User user = new User();
+        Ad ad = new Ad();
         
         user=userService.findById(commentDTO.getUserId());
         newComment=mapCommentDtoToComment(commentDTO);
@@ -38,21 +41,9 @@ public class CommentService {
         newComment.setId(UUID.randomUUID());
         newComment=commentRepository.save(newComment);
         System.out.println("Comment Saved");
-        user.getComments().add(newComment);
-        user=userRepository.save(user);
-        /*
-        User tmp = userService.findById(commentDTO.getUserId());
-        List<Comment> newComments = new ArrayList<Comment>();
-        newComments.add(newComment);
-        if(tmp.comments == null)
-        {
-        	tmp.comments = newComments;
-        }
-        else
-        {
-            tmp.comments.add(newComment);
-        }*/
-        //(userService.findById(commentDTO.getUserId()))..save((userService.findById(commentDTO.getUserId())));
+        ad.getComments().add(newComment);
+        ad=adRepository.save(ad);
+        
         return mapCommentDtoToComment(newComment);
     }
 

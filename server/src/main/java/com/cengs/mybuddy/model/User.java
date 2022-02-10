@@ -24,8 +24,6 @@ public class User {
 	private String userName;
 	private Long phoneNumber;
 	private String password;
-	public List<Comment> comments = new ArrayList<>();
-	public List<Ad> ads= new ArrayList<>();
 
 
 	public User() {

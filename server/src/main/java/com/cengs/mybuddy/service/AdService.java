@@ -25,7 +25,6 @@ public class AdService {
 	private final UserRepository userRepository;
 	private final CommentRepository commentRepository;
 	
-	
 public AdService(AdRepository adRepository, UserRepository userRepository,CommentRepository commentRepository) {
 		this.adRepository = adRepository;
 		this.userRepository= userRepository;
@@ -43,8 +42,8 @@ public AdService(AdRepository adRepository, UserRepository userRepository,Commen
 		newAd.setId(UUID.randomUUID());
 		newAd= adRepository.save(newAd);
 		System.out.println("Ad saved.");
-		user.getAds().add(newAd);
-		user=userRepository.save(user);
+		//user.getAds().add(newAd);
+		//user=userRepository.save(user);
 		
 		return mapAdDtoToAd(newAd);
 	}
