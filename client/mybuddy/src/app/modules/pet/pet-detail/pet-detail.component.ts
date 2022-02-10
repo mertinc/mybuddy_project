@@ -22,7 +22,6 @@ export class PetDetailComponent implements OnInit {
 
   getAdDetail(): void {
     this.apiService.getAdWithId(this.adId).then((data:any) => {
-      console.log(data.id);
       this.addDetail = [data];
     });
   }

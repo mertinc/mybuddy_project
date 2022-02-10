@@ -10,16 +10,6 @@ import { fakeDbService } from 'src/app/shared/services/fakeDb';
 })
 export class HomePageComponent implements OnInit {
   animals: any;
-  test =
-  {
-    "userId":"9fe35a63-5be0-4f4b-abbd-5b436646bb4e",
-    "date": "2022-4-1-2-12-1",
-    "title":"Buunu sahiplen",
-    "explanation" : "Bu bir 5555",
-    "image" : "resim olacak ",
-    "phoneNumber" : "010101010222",
-    "status": "active"
-    }
   constructor(
     private router: Router,
     private fakeDb: fakeDbService,
@@ -36,8 +26,6 @@ export class HomePageComponent implements OnInit {
   getAdd(): void {
     this.apiService.getAd().subscribe((data: Ad) => {
       this.animals = data;
-      console.log(data);
-
     });
   }
 }

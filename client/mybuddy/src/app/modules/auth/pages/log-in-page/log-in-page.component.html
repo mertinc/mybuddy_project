@@ -5,7 +5,7 @@
         <div class="card-body p-5 text-center">
 
           <h2 class="mb-4 pb-2 pb-md-0 mb-md-5">Sign In</h2>
-          <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+          <form [formGroup]="loginForm" (ngSubmit)="signIn(loginForm)">
           <div class="form-outline mb-4">
             <input type="email" id="emailAddress" formControlName="email" class="form-control form-control-lg" />
             <label class="form-label" for="emailAddress">Email</label>

@@ -16,14 +16,17 @@
 
         <div class="d-flex align-items-center">
 
-          <button type="button" class="btn btn-primary me-3" routerLink="/pet/add-pet">
+          <button *ngIf="isUser" type="button" class="btn btn-primary me-3" routerLink="/pet/add-pet">
             Add Pet
           </button>
-          <button type="button" class="btn btn-primary me-3" [routerLink]="['../auth/log-in']">
+          <button *ngIf="!isUser" type="button" class="btn btn-primary me-3" [routerLink]="['../auth/log-in']">
             Login
           </button>
-          <button type="button" class="btn btn-primary me-3" [routerLink]="['../auth/sign-up']">
+          <button *ngIf="!isUser" type="button" class="btn btn-primary me-3" [routerLink]="['../auth/sign-up']">
             Sign up for free
+          </button>
+          <button *ngIf="isUser" type="button" class="btn btn-primary me-3" [routerLink]="['/']" (click)="signOut()">
+            Logout
           </button>
 
         </div>
