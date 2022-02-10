@@ -24,6 +24,7 @@ public class CommentService {
     private UserService userService;
     private final CommentRepository commentRepository;
     private final AdRepository adRepository;
+    private AdService adService;
 
     public CommentService(CommentRepository commentRepository, AdRepository adRepository) {
         this.commentRepository = commentRepository;
@@ -36,6 +37,7 @@ public class CommentService {
         Ad ad = new Ad();
         
         user=userService.findById(commentDTO.getUserId());
+        ad=adService.findById(commentDTO.getAdId());
         newComment=mapCommentDtoToComment(commentDTO);
         newComment.setUser(userService.findById(commentDTO.getUserId()));
         newComment.setId(UUID.randomUUID());
@@ -43,7 +45,6 @@ public class CommentService {
         System.out.println("Comment Saved");
         ad.getComments().add(newComment);
         ad=adRepository.save(ad);
-        
         return mapCommentDtoToComment(newComment);
     }
 
@@ -52,6 +53,7 @@ public class CommentService {
         Comment comment = new Comment();
         comment.setId(dto.getId());
         comment.setUser(userService.findById(dto.getUserId()));
+        comment.setAdId(dto.getAdId());
         comment.setDate(dto.getDate());
         comment.setContent(dto.getContent());
         return comment;
@@ -61,6 +63,7 @@ public class CommentService {
         CommentDTO dto = new CommentDTO();
         dto.setId(comment.getId());
         //System.out.println(comment.getUser());
+        dto.setAdId(comment.getAdId());
         dto.setUserId(comment.getUser().getId());
         dto.setDate(comment.getDate());
         dto.setContent(comment.getContent());

@@ -16,17 +16,17 @@ public class Comment {
     @DBRef
     private User user;
     //@DBRef
-    //private Ad ad;
+    private UUID adId;
     private String date;
     private String content;
 
     public Comment(){
 
     }
-    public Comment(UUID id, User user, String date,String content) {
+    public Comment(UUID id, User user, String date,String content, UUID adId) {
         this.id = id;
         this.user = user;
-        //this.ad = ad;
+        this.adId = adId;
         this.date = date;
         this.content=content;
     }

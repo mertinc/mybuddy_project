@@ -23,6 +23,8 @@ public class CommentDTO {
     @NotNull(message = "user is mandatory")
     private UUID userId;
     //@NotNull(message = "name is mandatory")
+    @NotNull(message = "user is mandatory")
+    private UUID adId;
     //private String name;
     @NotNull(message = "date is mandatory")
     @JsonFormat(pattern="yyyy-MM-dd",shape= JsonFormat.Shape.STRING)

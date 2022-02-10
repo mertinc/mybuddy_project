@@ -81,6 +81,11 @@ public AdService(AdRepository adRepository, UserRepository userRepository,Commen
 		dto.setStatus(ad.getStatus());
 		return dto;
 	}
+
+	public Ad findById(UUID adId) {
+		// TODO Auto-generated method stub
+		return adRepository.findById(adId);
+	}
 	
 	
 }
