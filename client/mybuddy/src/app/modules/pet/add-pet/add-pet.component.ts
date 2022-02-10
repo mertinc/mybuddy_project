@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { formatDate} from '@angular/common';
+import { formatDate } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiHttpService } from 'src/app/shared/services/api-http.service';
 
 @Component({
   selector: 'app-add-pet',
@@ -9,11 +10,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddPetComponent implements OnInit {
   addPetForm: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  srcResult: any;
+  constructor(private fb: FormBuilder, private apiService: ApiHttpService) {}
 
   ngOnInit(): void {
     this.addPetForm = this.fb.group({
-      title: ['Sammy', Validators.required],
+      title: ['', Validators.required],
       explanation: ['', [Validators.required]],
       status: ['', [Validators.required]],
       date: ['', [Validators.required]],
@@ -29,5 +31,16 @@ export class AddPetComponent implements OnInit {
     console.log('date', form.value.date._d);
     console.log('date', formatDate(form.value.date._d, 'dd/MM/yyyy', 'en-US'));
     console.log('date', form.value.date._i);
+    // const data = {
+    //   "title": form.value.title,
+    //   "date": formatDate(form.value.date._d, 'dd/MM/yyyy', 'en-US'),
+    //   "explanation": form.value.explanation,
+
+    // };
+    // this.apiService.createAd();
+  }
+
+  fileUpload(data: any) {
+    console.log(data);
   }
 }

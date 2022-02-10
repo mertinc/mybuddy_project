@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ApiHttpService } from 'src/app/shared/services/api-http.service';
 
 @Component({
   selector: 'app-pet-detail',
@@ -7,10 +8,22 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./pet-detail.component.scss'],
 })
 export class PetDetailComponent implements OnInit {
-  constructor(private route: ActivatedRoute) {}
+  adId: any;
+  addDetail: any;
+  constructor(
+    private route: ActivatedRoute,
+    private apiService: ApiHttpService
+  ) {}
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.paramMap.get('id'));
+    this.adId = this.route.snapshot.paramMap.get('id');
+    this.getAdDetail();
+  }
 
+  getAdDetail(): void {
+    this.apiService.getAdWithId(this.adId).then((data:any) => {
+      console.log(data.id);
+      this.addDetail = [data];
+    });
   }
 }

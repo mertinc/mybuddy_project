@@ -12,14 +12,50 @@ export class ApiHttpService {
     private http: HttpClient
   ) {}
 
-  getAdd(): Observable<any> {
+  getAd(): Observable<any> {
     return this.http.get(this.url + '/ads/findAll');
+  }
+
+  login(){
+
+  }
+
+  getAdWithId(id: string) {
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(this.url + `/ads/${id}`)
+        .toPromise()
+        .then(
+          (res) => {
+            resolve(res);
+          },
+          (msg) => {
+            reject(msg);
+          }
+        );
+    });
   }
 
   createAd(body: any) {
     return new Promise((resolve, reject) => {
       this.http
-        .post(this.url + '/ads/addAd', body)
+        .post(this.url + '/ads/createAd', body)
+        .toPromise()
+        .then(
+          (res) => {
+            resolve(res);
+          },
+          (msg) => {
+            reject(msg);
+          }
+        );
+    });
+  }
+
+  createUser(body: any) {
+    return new Promise((resolve, reject) => {
+      this.http
+        .post(this.url + '/users/addUser', body)
         .toPromise()
         .then(
           (res) => {

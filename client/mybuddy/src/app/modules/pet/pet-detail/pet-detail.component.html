@@ -1,1 +1,37 @@
-<p>pet-detail works!</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <mat-card *ngFor="let item of addDetail" class="d-flex flex-row">
+        <img class="item-img" src="https://blog.petibom.com/wp-content/uploads/2021/09/scottish-straight-kedi.jpg"
+          alt="">
+        <div class="d-flex flex-column w-100 right-cont">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="Title" value="{{item.title}}" disabled>
+          </mat-form-field>
+
+          <!-- <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Leave a comment</mat-label>
+            <textarea matInput placeholder="Leave a comment" value="{{item?.comments?.content}}" disabled></textarea>
+          </mat-form-field> -->
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Explanation</mat-label>
+            <textarea matInput placeholder="Explanation" value="{{item.explanation}}" disabled></textarea>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Status</mat-label>
+            <input matInput placeholder="Status" value="{{item.status}}" disabled>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Date</mat-label>
+            <input matInput placeholder="Title" value="{{item.date}}" disabled>
+          </mat-form-field>
+        </div>
+
+      </mat-card>
+    </div>
+  </div>
+</div>

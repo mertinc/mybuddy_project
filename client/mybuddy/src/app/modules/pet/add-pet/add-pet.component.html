@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <form class="example-form" [formGroup]="addPetForm" (ngSubmit)="onSubmit(addPetForm)">
         <div class="ct-form">
-<!--
+          <!--
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Pet</mat-label>
             <input formControlName="categorize" matInput placeholder="Pet Categorize">
@@ -33,6 +33,10 @@
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
+          <div class="file mb-2">
+            <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+            <input hidden #fileInput (change)="fileUpload($event)" type="file" id="file">
+          </div>
           <button mat-raised-button color="primary" class="mr-auto w-50">Submit</button>
         </div>
       </form>
