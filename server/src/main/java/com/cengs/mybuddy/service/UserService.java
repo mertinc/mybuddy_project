@@ -23,16 +23,17 @@ public class UserService {
 	}
 	
 	public UserDTO createUser(UserDTO userDto) {
-		User existUser = new User();
-		Optional<User>optUser;
+		/*User existUser = new User();
+		Optional<User> optUser;
 		optUser = userRepository.findById(userDto.getId());
 		if(optUser.isEmpty()) {
 			throw new RuntimeException("Exist User");
-		}
-		existUser=optUser.get();
+		}*/
+		//exisstUser=optUser.get();
 		User newUser = new User();
 		newUser=mapUserDtoToUser(userDto);
 		newUser.setId(UUID.randomUUID());
+		System.out.println(newUser.getId());
 		newUser= userRepository.save(newUser);
 		return mapUserDtoToUser(newUser);
 	}
@@ -64,6 +65,7 @@ public class UserService {
 		user.setEmail(dto.getEmail());
 		user.setUserName(dto.getUserName());
 		user.setPassword(dto.getPassword());
+		user.setPhoneNumber(dto.getPhoneNumber());
 		return user;
 	}
 
@@ -75,6 +77,7 @@ public class UserService {
 		dto.setUserName(user.getUserName());
 		dto.setEmail(user.getEmail());
 		dto.setPassword(user.getPassword());
+		dto.setPhoneNumber(user.getPhoneNumber());
 		return dto;
 	}
 

@@ -22,14 +22,14 @@ public class User {
 	private String lastName;
 	private String email;
 	private String userName;
-	private Long phoneNumber;
+	private String phoneNumber;
 	private String password;
 
 
 	public User() {
 }
 	
-	public User(UUID id, String firstName, String lastName, String email, String userName, Long phoneNumber, String password) {
+	public User(UUID id, String firstName, String lastName, String email, String userName, String phoneNumber, String password) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
