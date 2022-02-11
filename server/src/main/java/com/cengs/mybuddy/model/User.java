@@ -1,6 +1,9 @@
 package com.cengs.mybuddy.model;
 
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
@@ -9,7 +12,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Document // ("users")  db içinde objelerin altında bulunacağı bşalık
+@Document // ("users")  db içinde objelerin altında bulunacağı başlık
 
 public class User {
 	
@@ -18,17 +21,22 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String email;
-	
+	private String userName;
+	private String phoneNumber;
+	private String password;
+
+
 	public User() {
-		this.id=id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-	}
-	public User(UUID id, String firstName, String lastName, String email) {
+}
+	
+	public User(UUID id, String firstName, String lastName, String email, String userName, String phoneNumber, String password) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.userName = userName;
+		this.phoneNumber = phoneNumber;
+		this.password = password;
 	}
 }
 	
