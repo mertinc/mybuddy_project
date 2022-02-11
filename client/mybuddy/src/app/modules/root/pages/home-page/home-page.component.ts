@@ -26,6 +26,8 @@ export class HomePageComponent implements OnInit {
   getAdd(): void {
     this.apiService.getAd().subscribe((data: Ad) => {
       this.animals = data;
+      console.log(this.animals);
+
     });
   }
 }
