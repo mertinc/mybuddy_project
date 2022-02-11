@@ -33,10 +33,15 @@
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
-          <div class="file mb-2">
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Image Url</mat-label>
+            <input formControlName="imageURL" matInput placeholder="imageURL"/>
+          </mat-form-field>
+          <!-- <div class="file mb-2">
             <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
             <input hidden #fileInput (change)="fileUpload($event)" type="file" id="file">
-          </div>
+          </div> -->
           <button mat-raised-button color="primary" class="mr-auto w-50">Submit</button>
         </div>
       </form>

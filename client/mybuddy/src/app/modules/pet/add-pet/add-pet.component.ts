@@ -3,6 +3,7 @@ import { formatDate } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiHttpService } from 'src/app/shared/services/api-http.service';
 import { AuthService } from '../../auth/pages/services/auth.service';
+import { Router } from '@angular/router';
 // import { adPublishRequest } from '../../auth/pages/services/axios';
 
 @Component({
@@ -19,7 +20,8 @@ export class AddPetComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private apiService: ApiHttpService,
-    private authService: AuthService
+    private authService: AuthService,
+    private route:Router
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +33,7 @@ export class AddPetComponent implements OnInit {
       explanation: ['', [Validators.required]],
       status: ['', [Validators.required]],
       date: ['', [Validators.required]],
+      imageURL: ['', [Validators.required]],
     });
     // adPublishRequest()
   }
@@ -46,13 +49,15 @@ export class AddPetComponent implements OnInit {
     console.log('date', form.value.date._i);
     form.value.userId = this.user[0];
     form.value.phoneNumber = '05538589058';
-    // form.value.date = formatDate(form.value.date._d, 'dd/MM/yyyy', 'en-US');
-    form.value.date = "2022-02-02";
+    // form.value.imageURL = null;
+    form.value.date = formatDate(form.value.date._d, 'dd/MM/yyyy', 'en-US');
+    // form.value.date = "2022-02-02";
     console.log(form.value);
     // let headers = new HttpHeaders().set('content-type', 'multipart/form-data')
-    this.formData.append('form', form.value);
+    // this.formData.append('form', form.value);
     // };
-    this.apiService.createAdWithImg(this.formData);
+    this.apiService.createAd(form.value);
+    this.route.navigateByUrl('/');
   }
 
   fileUpload(event: any) {

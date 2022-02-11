@@ -51,7 +51,7 @@ export class ApiHttpService {
   createAd(body: any) {
     return new Promise((resolve, reject) => {
       this.http
-        .post(this.url + '/ads/createAd', body)
+        .post(this.url + '/ads/createAdd', body)
         .toPromise()
         .then(
           (res) => {
@@ -64,23 +64,23 @@ export class ApiHttpService {
     });
   }
 
-  createAdWithImg(body: any) {
-    let headers = new HttpHeaders();
-    headers = headers.set('Content-Type', 'multipart/form-data');
-    return new Promise((resolve, reject) => {
-      this.http
-        .post(this.url + '/ads/', body,{headers:headers})
-        .toPromise()
-        .then(
-          (res) => {
-            resolve(res);
-          },
-          (msg) => {
-            reject(msg);
-          }
-        );
-    });
-  }
+  // createAdWithImg(body: any) {
+  //   let headers = new HttpHeaders();
+  //   headers = headers.set('Content-Type', 'multipart/form-data');
+  //   return new Promise((resolve, reject) => {
+  //     this.http
+  //       .post(this.url + '/ads/', body,{headers:headers})
+  //       .toPromise()
+  //       .then(
+  //         (res) => {
+  //           resolve(res);
+  //         },
+  //         (msg) => {
+  //           reject(msg);
+  //         }
+  //       );
+  //   });
+  // }
 
   createUser(body: any) {
     return new Promise((resolve, reject) => {
